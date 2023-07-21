@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todas as Funcionalidades</title>
+</head>
+<body>
+  <h1>Encontre o maior número</h1>
+  <form>
+    <label for="num1">Digite o primeiro número:</label>
+    <input type="number" id="num1" required>
+    <br>
+    <label for="num2">Digite o segundo número:</label>
+    <input type="number" id="num2" required>
+    <br>
+    <button type="button" onclick="encontrarMaior()">Encontrar Maior</button>
+  </form>
+  <p id="resultadoMaior"></p>
+
+  <hr>
+
+  <h1>Verifique a nota</h1>
+  <form>
+    <label for="nota">Digite a nota do aluno:</label>
+    <input type="number" id="nota" required>
+    <br>
+    <button type="button" onclick="verificarNota()">Verificar Nota</button>
+  </form>
+  <p id="resultadoNota"></p>
+
+  <hr>
+
+  <h1>Calcule a média do vetor</h1>
+  <form>
+    <label for="numeros">Digite os números separados por vírgula:</label>
+    <input type="text" id="numeros" required>
+    <br>
+    <button type="button" onclick="calcularMedia()">Calcular Média</button>
+  </form>
+  <p id="resultadoMedia"></p>
+
+  <hr>
+
+  <h1>Verifique o valor da variável</h1>
+  <form>
+    <label for="variavel">Digite o valor da variável:</label>
+    <input type="text" id="variavel" required>
+    <br>
+    <button type="button" onclick="verificarVariavel()">Verificar Variável</button>
+  </form>
+  <p id="resultadoVariavel"></p>
+
+  <hr>
+
+  <h1>Calcule a soma dos elementos da matriz</h1>
+  <form>
+    <label for="matriz">Digite os elementos da matriz separados por vírgulas:</label>
+    <br>
+    <textarea id="matriz" rows="3" required></textarea>
+    <br>
+    <button type="button" onclick="calcularSoma()">Calcular Soma</button>
+  </form>
+  <p id="resultadoSoma"></p>
+
+  <hr>
+
+  <h1>Cálculo do Fatorial</h1>
+  <form>
+    <label for="numero">Digite um número inteiro positivo:</label>
+    <input type="number" id="numero" required>
+    <br>
+    <button type="button" onclick="calcularFatorial()">Calcular Fatorial</button>
+  </form>
+  <p id="resultadoFatorial"></p>
+
+  <hr>
+
+  <h1>Escolha uma opção</h1>
+  <form>
+    <input type="radio" id="opcao1" name="opcao" value="1">
+    <label for="opcao1">Opção 1</label>
+    <br>
+    <input type="radio" id="opcao2" name="opcao" value="2">
+    <label for="opcao2">Opção 2</label>
+    <br>
+    <input type="radio" id="opcao3" name="opcao" value="3">
+    <label for="opcao3">Opção 3</label>
+    <br>
+    <button type="button" onclick="exibirMensagem()">Exibir Mensagem</button>
+  </form>
+  <p id="resultadoOpcao"></p>
+
+  <hr>
+
+  <h1>Encontre o maior número do vetor</h1>
+  <form>
+    <label for="numerosVetor">Digite os números separados por vírgula:</label>
+    <input type="text" id="numerosVetor" required>
+    <br>
+    <button type="button" onclick="encontrarMaiorVetor()">Encontrar Maior</button>
+  </form>
+  <p id="resultadoMaiorVetor"></p>
+
+  <hr>
+
+  <h1>Calcule a média dos elementos da matriz</h1>
+  <form>
+    <label for="matrizMedia">Digite os elementos da matriz separados por vírgulas:</label>
+    <br>
+    <textarea id="matrizMedia" rows="3" required></textarea>
+    <br>
+    <button type="button" onclick="calcularMediaMatriz()">Calcular Média</button>
+  </form>
+  <p id="resultadoMediaMatriz"></p>
+
+  <script>
+    function encontrarMaior() {
+      const num1 = parseFloat(document.getElementById("num1").value);
+      const num2 = parseFloat(document.getElementById("num2").value);
+      const maior = num1 > num2 ? num1 : num2;
+      document.getElementById("resultadoMaior").innerText = "O maior número é: " + maior;
+    }
+
+    function verificarNota() {
+      const nota = parseFloat(document.getElementById("nota").value);
+      let mensagem = "";
+
+      if (nota < 6) {
+        mensagem = "Reprovado";
+      } else if (nota < 8) {
+        mensagem = "Aprovado";
+      } else {
+        mensagem = "Aprovado com louvor";
+      }
+
+      document.getElementById("resultadoNota").innerText = mensagem;
+    }
+
+    function calcularMedia() {
+      const numerosInput = document.getElementById("numeros").value;
+      const numerosArray = numerosInput.split(",").map(Number);
+      let soma = 0;
+
+      for (let i = 0; i < numerosArray.length; i++) {
+        soma += numerosArray[i];
+      }
+
+      const media = soma / numerosArray.length;
+      document.getElementById("resultadoMedia").innerText = "A média dos números é: " + media;
+    }
+
+    function verificarVariavel() {
+      const variavel = document.getElementById("variavel").value;
+      let mensagem = "";
+
+      if (variavel === "a") {
+        mensagem = "A";
+      } else if (variavel === "b") {
+        mensagem = "B";
+      } else {
+        mensagem = "Outra letra";
+      }
+
+      document.getElementById("resultadoVariavel").innerText = mensagem;
+    }
+
+    function calcularSoma() {
+      const matrizInput = document.getElementById("matriz").value;
+      const linhas = matrizInput.trim().split("\n");
+      let matriz = [];
+
+      for (let i = 0; i < linhas.length; i++) {
+        const elementos = linhas[i].split(",").map(Number);
+        matriz.push(elementos);
+      }
+
+      let soma = 0;
+      for (let i = 0; i < matriz.length; i++) {
+        for (let j = 0; j < matriz[i].length; j++) {
+          soma += matriz[i][j];
+        }
+      }
+
+      document.getElementById("resultadoSoma").innerText = "A soma dos elementos da matriz é: " + soma;
+    }
+
+    function calcularFatorial() {
+      const numero = parseInt(document.getElementById("numero").value);
+      let fatorial = 1;
+
+      for (let i = 1; i <= numero; i++) {
+        fatorial *= i;
+      }
+
+      document.getElementById("resultadoFatorial").innerText = "O fatorial de " + numero + " é: " + fatorial;
+    }
+
+    function exibirMensagem() {
+      const opcaoSelecionada = document.querySelector('input[name="opcao"]:checked');
+
+      if (opcaoSelecionada) {
+        const valorOpcao = opcaoSelecionada.value;
+
+        switch (valorOpcao) {
+          case "1":
+            document.getElementById("resultadoOpcao").innerText = "Opção 1 escolhida";
+            break;
+          case "2":
+            document.getElementById("resultadoOpcao").innerText = "Opção 2 escolhida";
+            break;
+          case "3":
+            document.getElementById("resultadoOpcao").innerText = "Opção 3 escolhida";
+            break;
+        }
+      } else {
+        document.getElementById("resultadoOpcao").innerText = "Opção inválida";
+      }
+    }
+
+    function encontrarMaiorVetor() {
+      const numerosInput = document.getElementById("numerosVetor").value;
+      const numerosArray = numerosInput.split(",").map(Number);
+      let maior = numerosArray[0];
+
+      for (let i = 1; i < numerosArray.length; i++) {
+        if (numerosArray[i] > maior) {
+          maior = numerosArray[i];
+        }
+      }
+
+      document.getElementById("resultadoMaiorVetor").innerText = "O maior número é: " + maior;
+    }
+
+    function calcularMediaMatriz() {
+      const matrizInput = document.getElementById("matrizMedia").value;
+      const linhas = matrizInput.trim().split("\n");
+      let matriz = [];
+
+      for (let i = 0; i < linhas.length; i++) {
+        const elementos = linhas[i].split(",").map(Number);
+        matriz.push(elementos);
+      }
+
+      let soma = 0;
+      let totalElementos = 0;
+
+      for (let i = 0; i < matriz.length; i++) {
+        for (let j = 0; j < matriz[i].length; j++) {
+          soma += matriz[i][j];
+          totalElementos++;
+        }
+      }
+
+      const media = soma / totalElementos;
+      document.getElementById("resultadoMediaMatriz").innerText = "A média dos elementos da matriz é: " + media;
+    }
+  </script>
+</body>
+</html>
